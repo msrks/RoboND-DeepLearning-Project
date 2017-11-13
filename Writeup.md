@@ -29,7 +29,7 @@ Because Loss Curve is slightly overfitting, I think adding more layer is not goo
 
 >The student shall also provide a graph, table, diagram, illustration or figure for the overall network to serve as a reference for the reviewer.
 
-![](model_vis.png =70%x)
+![]("./model_vis.png" =70%x)
 
 ### 3. The write-up conveys the student's understanding of the parameters chosen for the the neural network.
 
