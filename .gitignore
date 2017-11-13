@@ -106,4 +106,5 @@ RUNS/
 data/sample_evaluation_data/
 data/train/
 data/validation/
-
+data/train_orig/
+data/raw_sim_data/
