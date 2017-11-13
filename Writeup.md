@@ -14,23 +14,22 @@ You're reading it!
 
 My Network has the following component.
 
-- encoder network w/ separable convolution layers
-- 1x1 conv network
-- decoder network
-
-encoder network
+- encoder network: extract abstract (global) features and context.
+- 1x1 conv network: add nonlinearity to the features.
+- decoder network: generate semantic map using features.
 
 >The student can demonstrate the benefits and/or drawbacks different network architectures pertaining to this project and can justify the current network with factual data.
 
-Neural Network with fully connected layers is usually used in Object Recognition Problem (Class Label Classification). A fully connected layer need a fixed size of input. On the otherhand, fully connected layer can be replaced by 1x1 convolution layer. Neural Network without fully connected layers (replaced by 1x1 convolution layer) can take variable input size and more effective to operate on the GPU.
+`Neural Network with fully connected layers` is usually used in Object Recognition Problem (Class Label Classification). A fully connected layer need a fixed size of input. On the otherhand, fully connected layer can be replaced by 1x1 convolution layer. `Neural Network without fully connected layers` a.k.a. `Fully Convolutional Network(FCN)` (replaced by 1x1 convolution layer) can take variable input size and more effective to operate on the GPU.
 
 >Any choice of configurable parameters should also be explained in the network architecture.
 
-TODO
+I have trained 2layer FCN with skip connection.
+Because Loss Curve is slightly overfitting, I think adding more layer is not good choice. The `number of channels` and `stride size` for each layer is choosed as convention.
 
 >The student shall also provide a graph, table, diagram, illustration or figure for the overall network to serve as a reference for the reviewer.
 
-TODO
+![](model_vis.png =70%x)
 
 ### 3. The write-up conveys the student's understanding of the parameters chosen for the the neural network.
 
@@ -41,11 +40,7 @@ TODO
 - Batch Size
 - Etc.
 
-TODO
-
->All configurable parameters should be explicitly stated and justified
-
-TODO
+most parameters is obtained by Brute Force Tuning. Fpr hypermeters, 25epoch is choosed because valid loss is saturated. learning rate is choosed by tuning (I have tried lr=0.01/0.005/0.004).
 
 ### 4. The student has a clear understanding and is able to identify the use of various techniques and concepts in network layers indicated by the write-up.
 
@@ -78,6 +73,17 @@ but more difficult than human, because non-human object has less indivizuality.
 
 >The file is in the correct format (.h5) and runs without errors.
 
+the traind model weights is stored in the following location.
+
+- data/weights/config_model_weights
+- data/weights/model_weights
+
 ### 2. The neural network must achieve a minimum level of accuracy for the network implemented.
 
 >The neural network should obtain an accuracy greater than or equal to 40% (0.40) using the Intersection over Union (IoU) metric.
+
+I have got final score as 0.45.
+
+```
+final_score = final_IoU * weight = 0.452702455737
+```
