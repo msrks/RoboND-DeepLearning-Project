@@ -87,3 +87,12 @@ I have got final score as 0.45.
 ```
 final_score = final_IoU * weight = 0.452702455737
 ```
+
+## Additional information
+
+I have added training data by
+
+1. recording data in simulation
+2. augumenting data by applying `np.fliplr` (in `data/fliplr.py`)
+
+this makes score improve.
